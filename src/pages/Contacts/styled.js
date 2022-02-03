@@ -24,25 +24,42 @@ export const ContactContainer = styled.div`
     margin-left: 15px;
     overflow-x: hidden;
     .edit{
-        background-color: white;
-        color: black;
-        font-size: 18px;
-        border: 2px solid #4CAF50; 
-        transition-duration: 0.4s;
+    margin: 20px 0 20px 0;
+    background-color: #FFF;
+    border-radius: 5px;
+    color: #4CAF50;
+    cursor: pointer;
+    display: block;
+    font-family: Inter,-apple-system,system-ui,Roboto,"Helvetica Neue",Arial,sans-serif;
+    height: 44px;
+    outline: 0;
+    overflow: hidden;
+    padding: 0 20px;
+    text-align: center;
+    border-color: #4CAF50;
     }
 
     .delete{
-        background-color: white;
-        color: black;
-        font-size: 18px;
-        border: 2px solid #d22e2e;
+    margin: 20px 0 20px 0;
+    background-color: #FFF;
+    border-radius: 5px;
+    color: #d22e2e;
+    cursor: pointer;
+    display: block;
+    font-family: Inter,-apple-system,system-ui,Roboto,"Helvetica Neue",Arial,sans-serif;
+    height: 44px;
+    outline: 0;
+    overflow: hidden;
+    padding: 0 20px;
+    text-align: center;
+    border-color: #d22e2e;
     }
     .delete:hover{
-        background-color: #d22e2e; /* Green */
+        background-color: #d22e2e;
         color: white;
     } 
     .edit:hover{
-        background-color: #4CAF50; /* Green */
+        background-color: #4CAF50; 
         color: white;
     }
     @media (max-width: 1366px){
@@ -51,12 +68,6 @@ export const ContactContainer = styled.div`
     }
 `;
 
-export const ProfilePicture = styled.div`
-    margin: 15px 0 0 15px;
-    width: 69px;
-    height: 69px;
-    
-`
 
 
 export const InformationContainer = styled.div`
@@ -84,6 +95,7 @@ export const InformationContainer = styled.div`
 export const OwnerData = styled.section`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    margin-left: 10px;
     width: 600px;
 `
 
