@@ -43,7 +43,7 @@ export const Form = styled.form`
     }
 
     .btnCancel{
-      margin: 20px 0 20px 0;
+    margin: 20px 0 20px 0;
     background-color: gray;
     border-radius: 5px;
     color: #FFFFFF;
