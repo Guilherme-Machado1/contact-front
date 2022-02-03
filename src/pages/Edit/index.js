@@ -3,48 +3,52 @@ import Header from '../../Header';
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { Gif } from '../Contacts/styled';
+import gif from '../Contacts/257.gif'
 
 export default function Edit() {
   const [contact, setContact] = useState([]);
   const [newContact, setNewContact] = useState([]);
 
+    //get the id from the parameters
     const {id} = useParams();
     let navigate = useNavigate();
+
+    //get data from the endpoint
     useEffect(() => {
     async function getData(id) {
       try {
         const response = await axios.get(`http://localhost:3001/contact/${id}`);
         const data = response.data.data;
         setContact(data);
-
       } catch (error) {
-        console.log(error)
+        throw new Error(error)
       }
-      
     }
     
     getData(id);
   }, [id]);
 
-
+  //Send the newContact to the endPoint to update
   async function handleEdit(e){
     e.preventDefault()
     try {
      const response = await axios.put(`http://localhost:3001/contact/edit/${id}`, newContact);
-     response ? navigate("/", {}) : console.log("Não foi possível atualizar o contato")
-
+     response ? navigate("/") : navigate(-1)
     } catch (error) {
-      console.log(error);
+      throw new Error(error)
     }
-
   }
-    function inputChangedHandler(event) {
+
+  //get the previous values and observe the changes, all values are passed to setNewContact
+  function inputChangedHandler(event) {
     setNewContact((prevValues) => ({
       ...prevValues,
       [event.target.name]: event.target.value,
     }));
   };
   
+  //goes back to the last page 
   function handleCancel(e) {
     e.preventDefault();
     navigate("/", {});
@@ -57,7 +61,7 @@ export default function Edit() {
       {contact.map((contact) => (
       <Form key={contact.id}>
         <div className='AsideRight'>
-            <label htmlFor="nome">
+            <label htmlFor="First_Name">
               Primeiro Nome:
               <input
                 type="text"
@@ -66,7 +70,7 @@ export default function Edit() {
                 onChange={inputChangedHandler}/>
             </label>
 
-            <label htmlFor="nome">
+            <label htmlFor="Email">
               E-mail:
               <input
                 type="email" 
@@ -75,7 +79,7 @@ export default function Edit() {
                 onChange={inputChangedHandler}/>
             </label>
 
-            <label htmlFor="nome">
+            <label htmlFor="Phone">
               Telefone:
               <input
                 type="text" 
@@ -84,7 +88,7 @@ export default function Edit() {
                 onChange={inputChangedHandler}/>
             </label>
 
-            <label htmlFor="nome">
+            <label htmlFor="Other_Phone">
               Outro Telefone:
               <input
                 type="text" 
@@ -93,7 +97,7 @@ export default function Edit() {
                 onChange={inputChangedHandler}/>
             </label>
 
-            <label htmlFor="nome">
+            <label htmlFor="Mobile">
               Celular:
               <input
                 type="text" 
@@ -102,7 +106,7 @@ export default function Edit() {
                 onChange={inputChangedHandler}/>
             </label>
 
-            <label htmlFor="nome">
+            <label htmlFor="Assistant">
               Assistente:
               <input
                 type="text"
@@ -112,14 +116,7 @@ export default function Edit() {
             </label>
           </div>
           <div className='AsideLeft'>
-              <label htmlFor="nome">
-                Fonte de Cliente potencial:
-                <input
-                  type="text" 
-                  onChange={inputChangedHandler}/>
-              </label>
-
-              <label htmlFor="nome">
+              <label htmlFor="Last_Name">
                 Sobrenome:
                 <input
                   type="text" 
@@ -128,7 +125,7 @@ export default function Edit() {
                   onChange={inputChangedHandler}/>
               </label>
 
-              <label htmlFor="nome">
+              <label htmlFor="Title">
                 Título:
                 <input
                   type="text" 
@@ -137,7 +134,7 @@ export default function Edit() {
                   onChange={inputChangedHandler}/>
               </label>
 
-              <label htmlFor="nome">
+              <label htmlFor="Department">
                 Departamento:
                 <input
                   type="text" 
@@ -146,7 +143,7 @@ export default function Edit() {
                   onChange={inputChangedHandler}/>
               </label>
 
-              <label htmlFor="nome">
+              <label htmlFor="Home_Phone">
                 Telefone Residencial:
                 <input
                   type="text" 
@@ -155,7 +152,7 @@ export default function Edit() {
                   onChange={inputChangedHandler}/>
               </label>
 
-              <label htmlFor="nome">
+              <label htmlFor="Fax">
                 Fax:
                 <input
                   type="text" 
@@ -164,7 +161,7 @@ export default function Edit() {
                   onChange={inputChangedHandler}/>
               </label>
 
-              <label htmlFor="nome">
+              <label htmlFor="Date_of_Birth">
                 Data de Nascimento:
                 <input
                   type="date" 
@@ -173,7 +170,7 @@ export default function Edit() {
                   onChange={inputChangedHandler}/>
               </label>
 
-              <label htmlFor="nome">
+              <label htmlFor="Asst_Phone">
                 Telefone do Assist.:
                 <input
                   type="text" 
@@ -182,7 +179,7 @@ export default function Edit() {
                   onChange={inputChangedHandler}/>
               </label>
 
-              <label htmlFor="nome">
+              <label htmlFor="Skype_ID">
                 ID do Skype:
                 <input
                   type="text" 
@@ -190,7 +187,7 @@ export default function Edit() {
                   defaultValue={contact.Skype_ID || ''}
                   onChange={inputChangedHandler}/>
               </label>
-              <label htmlFor="nome">
+              <label htmlFor="Secondary_Email">
                 E-mail secundário:
                 <input
                   type="text" 
@@ -199,7 +196,7 @@ export default function Edit() {
                   onChange={inputChangedHandler}/>
               </label>
 
-              <label htmlFor="nome">
+              <label htmlFor="Twitter">
                 Twitter:
                 <input
                   type="text" 
@@ -210,7 +207,7 @@ export default function Edit() {
             </div>
             <div className='AsideRightDown'>
               <h3>Informações de Indereço</h3>
-              <label htmlFor="nome">
+              <label htmlFor="Mailing_Street">
                 Rua de Correspondência:
                 <input
                   type="text"
@@ -219,7 +216,7 @@ export default function Edit() {
                   onChange={inputChangedHandler}/>
               </label>
 
-              <label htmlFor="nome">
+              <label htmlFor="ailing_City">
                 Cidade de Correspondência:
                 <input
                   type="text" 
@@ -228,7 +225,7 @@ export default function Edit() {
                   onChange={inputChangedHandler}/>
               </label>
 
-              <label htmlFor="nome">
+              <label htmlFor="Mailing_State">
                 Estado de Correspondência:
                 <input
                   type="text" 
@@ -237,7 +234,7 @@ export default function Edit() {
                   onChange={inputChangedHandler}/>
               </label>
 
-              <label htmlFor="nome">
+              <label htmlFor="Mailing_Zip">
                 CEP de Correspondência:
                 <input
                   type="text" 
@@ -246,7 +243,7 @@ export default function Edit() {
                   onChange={inputChangedHandler}/>
               </label>
 
-              <label htmlFor="nome">
+              <label htmlFor="Mailing_Country">
                 País de Correspondência:
                 <input
                   type="text" 
@@ -255,7 +252,7 @@ export default function Edit() {
                   onChange={inputChangedHandler}/>
               </label>
             </div><div className='AsideLeftDown'>
-              <label htmlFor="nome">
+              <label htmlFor="ther_Street">
                 Outra rua:
                 <input
                   type="text" 
@@ -264,7 +261,7 @@ export default function Edit() {
                   onChange={inputChangedHandler}/>
               </label>
 
-              <label htmlFor="nome">
+              <label htmlFor="Other_City">
                 Outra Cidade:
                 <input
                   type="text"
@@ -273,7 +270,7 @@ export default function Edit() {
                   onChange={inputChangedHandler}/>
               </label>
 
-              <label htmlFor="nome">
+              <label htmlFor="Other_State">
                 Outro Estado:
                 <input
                   type="text"
@@ -282,7 +279,7 @@ export default function Edit() {
                   onChange={inputChangedHandler}/>
               </label>
 
-              <label htmlFor="nome">
+              <label htmlFor="Other_Zip">
                 Outro Cep:
                 <input
                   type="text"
@@ -291,7 +288,7 @@ export default function Edit() {
                   onChange={inputChangedHandler}/>
               </label>
 
-              <label htmlFor="nome">
+              <label htmlFor="Other_Country">
                 Outro País:
                 <input
                   type="text" 
@@ -304,6 +301,12 @@ export default function Edit() {
             </div>
       </Form>
       ))}
+
+      {contact.length <= 0 &&
+        <Gif>
+          <img src={gif} alt="loading"/>
+        </Gif>
+      }
     </ >
   );
 }
