@@ -33,10 +33,11 @@ export default function Contacts() {
       <>
         <Header />
           <ContactContainer >
-        
+        {contacts.length <= 0 &&
+            <H1> Não foram achados contatos </H1>
+         }
          {!contacts &&
             <H1> Não foram achados contatos </H1>
-            return
          }
           {contacts.map((contact, index) => (
             <InformationContainer key={String(contact.id)}>
