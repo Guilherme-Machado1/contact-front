@@ -68,7 +68,9 @@ export default function Contacts() {
                     </InformationContainer>
                 ))}
           </ContactContainer>
-         
+         {contacts.length <= 0 &&
+            <h1> Não foram achados contatos </h1>
+         }
       </>
     )
 }
