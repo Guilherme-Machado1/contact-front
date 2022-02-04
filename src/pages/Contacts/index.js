@@ -36,6 +36,7 @@ export default function Contacts() {
         
          {!contacts &&
             <H1> Não foram achados contatos </H1>
+            return
          }
           {contacts.map((contact, index) => (
             <InformationContainer key={String(contact.id)}>
