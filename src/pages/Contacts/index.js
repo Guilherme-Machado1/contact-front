@@ -9,6 +9,7 @@ export default function Contacts() {
       try {
         const response = await axios.get('http://localhost:3001/contact');
         setContacts(response.data.data);
+          if(!contacts) return;
       } catch (error) {
         throw new Error(error)
       }
