@@ -72,7 +72,7 @@ export default function Contacts() {
           {contacts.length <= 0 &&
             <Gif>
                 <img src={gif} alt="loading"/>
-            <Gif>
+            </Gif>
           }
       </>
     )
