@@ -32,11 +32,6 @@ export default function Contacts() {
     return (
       <>
         <Header />
-        {contacts.length > 0 &&
-             <H1>Todos Os Contatos</H1>
-         }
-       
-        
           <ContactContainer >
           {contacts.map((contact, index) => (
             <InformationContainer key={String(contact.id)}>
