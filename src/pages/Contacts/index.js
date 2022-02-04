@@ -1,8 +1,7 @@
 import axios from 'axios';
 import {useState, useEffect} from "react";
-import { ContactContainer, InformationContainer, OwnerData, NavLink , Gif, H1} from "./styled";
+import { ContactContainer, InformationContainer, OwnerData, NavLink , H1} from "./styled";
 import Header from "../../Header";
-import gif from './257.gif';
 export default function Contacts() {
     const [contacts, setContacts] = useState([]);
     useEffect(() => {
