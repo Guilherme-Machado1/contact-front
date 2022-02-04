@@ -68,7 +68,7 @@ export default function Contacts() {
                 ))}
           </ContactContainer>
          {!contacts &&
-            <h1> Não foram achados contatos </h1>
+            <H1> Não foram achados contatos </H1>
          }
          
       </>
