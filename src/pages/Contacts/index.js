@@ -70,7 +70,7 @@ export default function Contacts() {
                 ))}
           </ContactContainer>
           {contacts.length <= 0 &&
-          <h1> Não existem contatos no Momento
+          <h1> Não existem contatos no Momento </h1>
 //             <Gif>
 //                 <img src={gif} alt="loading"/>
 //             </Gif>
