@@ -2,7 +2,6 @@ import axios from 'axios';
 import {useState, useEffect} from "react";
 import { ContactContainer, InformationContainer, OwnerData, NavLink , Gif, H1} from "./styled";
 import Header from "../../Header";
-import gif from './257.gif';
 export default function Contacts() {
     const [contacts, setContacts] = useState([]);
     useEffect(() => {
@@ -71,9 +70,6 @@ export default function Contacts() {
           </ContactContainer>
           {contacts.length <= 0 &&
           <h1> Não existem contatos no Momento </h1>
-//             <Gif>
-//                 <img src={gif} alt="loading"/>
-//             </Gif>
           }
       </>
     )
