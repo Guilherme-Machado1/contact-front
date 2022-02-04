@@ -3,7 +3,7 @@ import {useState, useEffect} from "react";
 import { ContactContainer, InformationContainer, OwnerData, NavLink , H1} from "./styled";
 import Header from "../../Header";
 export default function Contacts() {
-    const [contacts, setContacts] = useState([]);
+    const [contacts, setContacts] = useState(['']);
     useEffect(() => {
     async function getData() {
       try {
