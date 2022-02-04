@@ -33,6 +33,10 @@ export default function Contacts() {
       <>
         <Header />
           <ContactContainer >
+        
+         {!contacts &&
+            <H1> Não foram achados contatos </H1>
+         }
           {contacts.map((contact, index) => (
             <InformationContainer key={String(contact.id)}>
               <div>
@@ -67,10 +71,6 @@ export default function Contacts() {
                     </InformationContainer>
                 ))}
           </ContactContainer>
-         {!contacts &&
-            <H1> Não foram achados contatos </H1>
-         }
-         
       </>
     )
 }
