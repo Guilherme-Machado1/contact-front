@@ -70,7 +70,9 @@ export default function Contacts() {
                 ))}
           </ContactContainer>
           {contacts.length <= 0 &&
-            <h1>Nenhum contato encontrado</h1>
+            <Gif>
+                <img src={gif} alt="loading"/>
+            <Gif>
           }
       </>
     )
