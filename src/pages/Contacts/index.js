@@ -9,7 +9,6 @@ export default function Contacts() {
       try {
         const response = await axios.get('http://localhost:3001/contact');
         setContacts(response.data.data);
-          if(!contacts) return;
       } catch (error) {
         throw new Error(error)
       }
@@ -70,7 +69,7 @@ export default function Contacts() {
                     </InformationContainer>
                 ))}
           </ContactContainer>
-          {contacts.length <= 0 &&
+          {contacts.length <= 0 || !contacts &&
             <h1> Não foram achados contatos </h1>
          }
          
